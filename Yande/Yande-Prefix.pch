@@ -13,4 +13,7 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import "AFNetworking.h"
+    #define EXTRAIOS7 [[[UIDevice currentDevice] systemVersion] floatValue] >= 7?20.0f:0.0f
+    #define SERVERIP @"http://222.73.44.172:8088/"
 #endif

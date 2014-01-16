@@ -7,6 +7,8 @@
 //
 
 #import "YandeAppDelegate.h"
+#import "MainViewController.h"
+#import "MainNavigationViewController.h"
 
 @implementation YandeAppDelegate
 
@@ -16,6 +18,13 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    //mainVewController
+    MainViewController *mainViewContorller = [[MainViewController alloc]init];
+    MainNavigationViewController *navigationViewController = [[MainNavigationViewController alloc]initWithRootViewController:mainViewContorller];
+    self.window.rootViewController = navigationViewController;
+    
+    
     return YES;
 }
 
