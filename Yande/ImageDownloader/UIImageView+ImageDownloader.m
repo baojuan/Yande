@@ -30,7 +30,7 @@
                         dispatch_async(dispatch_get_main_queue(), ^{
                             self.image = [UIImage imageWithData:downloadData];
                             CGRect rect = self.frame;
-                            rect.size = CGSizeMake(self.image.size.width/2.0, self.image.size.height/2.0);
+                            rect.size.height = self.image.size.height*self.frame.size.width/self.image.size.width;
                             self.frame = rect;
                         });
                         dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -50,7 +50,7 @@
                     });
                     self.image = [UIImage imageWithData:fileData];
                     CGRect rect = self.frame;
-                    rect.size = CGSizeMake(self.image.size.width/2.0, self.image.size.height/2.0);
+                    rect.size.height = self.image.size.height*self.frame.size.width/self.image.size.width;
                     self.frame = rect;
                 }
             });
@@ -61,7 +61,7 @@
     {
         self.image = [UIImage imageWithData:data];
         CGRect rect = self.frame;
-        rect.size = CGSizeMake(self.image.size.width/2.0, self.image.size.height/2.0);
+        rect.size.height = self.image.size.height*self.frame.size.width/self.image.size.width;
         self.frame = rect;
     }
 
@@ -82,7 +82,7 @@
                         dispatch_async(dispatch_get_main_queue(), ^{
                             self.image = [UIImage imageWithData:downloadData];
                             CGRect rect = self.frame;
-                            rect.size = CGSizeMake(self.image.size.width/2.0, self.image.size.height/2.0);
+                            rect.size.height = self.image.size.height*self.frame.size.width/self.image.size.width;
                             self.frame = rect;
                         });
                         dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -102,7 +102,7 @@
                     });
                     self.image = [UIImage imageWithData:fileData];
                     CGRect rect = self.frame;
-                    rect.size = CGSizeMake(self.image.size.width/2.0, self.image.size.height/2.0);
+                    rect.size.height = self.image.size.height*self.frame.size.width/self.image.size.width;
                     self.frame = rect;
                 }
             });
@@ -113,7 +113,7 @@
     {
         self.image = [UIImage imageWithData:data];
         CGRect rect = self.frame;
-        rect.size = CGSizeMake(self.image.size.width/2.0, self.image.size.height/2.0);
+        rect.size.height = self.image.size.height*self.frame.size.width/self.image.size.width;
         self.frame = rect;
     }
 }

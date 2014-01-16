@@ -30,5 +30,6 @@
 //按图片缩小到目标长宽
 - (UIImage *)scaleImageToSize:(CGSize)newSize;
 
-- (UIImage *)scaleImagetoWidth:(NSInteger)width;
+- (UIImage *)scaleImagetoWidth:(CGFloat)width;
+
 @end

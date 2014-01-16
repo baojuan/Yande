@@ -19,6 +19,7 @@
     UITableView *_lTableView;
     UITableView *_rTableView;
     NSMutableArray *imageDataSource;
+    BOOL isSet;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -40,7 +41,7 @@
     [self.view addSubview:navigationView];
     
     
-    _lTableView = [[UITableView alloc]initWithFrame:CGRectMake(8, navigationView.frame.size.height + navigationView.frame.origin.y, 142, [UIScreen mainScreen].bounds.size.height - navigationView.frame.origin.y - navigationView.frame.size.height) style:UITableViewStylePlain];
+    _lTableView = [[UITableView alloc]initWithFrame:CGRectMake(8, navigationView.frame.size.height + navigationView.frame.origin.y, 142+6, [UIScreen mainScreen].bounds.size.height - navigationView.frame.origin.y - navigationView.frame.size.height) style:UITableViewStylePlain];
     //ios7 table view bug fixed
     if([_lTableView respondsToSelector:@selector(setSeparatorInset:)])
     {
@@ -50,22 +51,22 @@
     _lTableView.delegate = self;
     _lTableView.dataSource = self;
     _lTableView.showsVerticalScrollIndicator = NO;
+    _lTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_lTableView];
     
     
-    
-    _rTableView = [[UITableView alloc]initWithFrame:CGRectMake(156, navigationView.frame.size.height + navigationView.frame.origin.y, 142, [UIScreen mainScreen].bounds.size.height - navigationView.frame.origin.y - navigationView.frame.size.height) style:UITableViewStylePlain];
+    _rTableView = [[UITableView alloc]initWithFrame:CGRectMake(156, navigationView.frame.size.height + navigationView.frame.origin.y, 142+10, [UIScreen mainScreen].bounds.size.height - navigationView.frame.origin.y - navigationView.frame.size.height) style:UITableViewStylePlain];
     //ios7 table view bug fixed
     if([_rTableView respondsToSelector:@selector(setSeparatorInset:)])
     {
         [_rTableView setSeparatorInset:UIEdgeInsetsZero];
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
+    _rTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _rTableView.delegate = self;
     _rTableView.dataSource = self;
     [self.view addSubview:_rTableView];
 
-    
     
     //加载
     [self getPicList:@"all" Page:1];
@@ -87,6 +88,7 @@
     if(cell == nil)
     {
         cell = [[YandeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellName];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     if (_lTableView == tableView)
     {
@@ -113,7 +115,8 @@
         dict = [imageDataSource objectAtIndex:indexPath.row*2+1];
     }
 
-    return [[dict objectForKey:@"preview_height"]floatValue] + 6;
+    CGFloat height = [[dict objectForKey:@"preview_height"]floatValue]*142/[[dict objectForKey:@"preview_width"]floatValue];
+    return height + 6;
 }
 
 - (void)didReceiveMemoryWarning
@@ -136,6 +139,7 @@
     NSString *url = [NSString stringWithFormat:@"%@GetPicInfo.php?tag=%@&page=%d",SERVERIP,tag,page];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        isSet = NO;
         [imageDataSource addObjectsFromArray:[responseObject objectForKey:@"data"]];
         [_lTableView reloadData];
         [_rTableView reloadData];
@@ -143,5 +147,23 @@
         NSLog(@"Error: %@", error);
     }];
 }
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (!isSet)
+    {
+        CGSize size;
+        size.height = MAX(_lTableView.contentSize.height, _rTableView.contentSize.height);
+        size.width = _lTableView.contentSize.width;
+        _lTableView.contentSize = size;
+        size.width = _rTableView.contentSize.width;
+        _rTableView.contentSize = size;
+        isSet = YES;
+    }
+    _lTableView.contentOffset = scrollView.contentOffset;
+    _rTableView.contentOffset = scrollView.contentOffset;
+
+}
+
 
 @end

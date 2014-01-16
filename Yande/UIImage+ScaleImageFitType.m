@@ -222,15 +222,12 @@
     UIGraphicsEndImageContext();
     return small;
 }
-- (UIImage *)scaleImagetoWidth:(NSInteger)width
+- (UIImage *)scaleImagetoWidth:(CGFloat)width
 {
-    if (self.size.width<width) {
-        return self;
-    }
-    CGFloat selfHeight=self.size.height*width/self.size.width;
+    CGFloat selfHeight=self.size.height*width*2/self.size.width;
     CGRect newRect;
     newRect.origin=CGPointZero;
-    newRect.size=CGSizeMake(width,selfHeight);
+    newRect.size=CGSizeMake(width*2,selfHeight);
     
     
     UIGraphicsBeginImageContext(newRect.size);

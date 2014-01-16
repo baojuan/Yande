@@ -15,7 +15,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        self.thumb = [[UIImageView alloc]initWithFrame:CGRectMake(0, 6, 0, 0)];
+        self.thumb = [[UIImageView alloc]initWithFrame:CGRectMake(0, 6, 142, 0)];
         [self.contentView addSubview:self.thumb];
     }
     return self;
