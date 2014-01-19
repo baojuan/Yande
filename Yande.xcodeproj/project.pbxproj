@@ -33,7 +33,6 @@
 		E9547F1B188294AA005F8C08 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9547F1A188294AA005F8C08 /* SystemConfiguration.framework */; };
 		E9547F1F18829592005F8C08 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9547F1E18829592005F8C08 /* MobileCoreServices.framework */; };
 		E9547F221882A031005F8C08 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9547F211882A031005F8C08 /* MainViewController.m */; };
-		E9547F251882A14C005F8C08 /* MainNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9547F241882A14C005F8C08 /* MainNavigationViewController.m */; };
 		E9547F281882A392005F8C08 /* YandeNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9547F271882A392005F8C08 /* YandeNavigationView.m */; };
 		E9547F2C1882EB2F005F8C08 /* ImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E9547F2B1882EB2F005F8C08 /* ImageCache.m */; };
 		E9547F321882F165005F8C08 /* IOManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9547F311882F165005F8C08 /* IOManager.m */; };
@@ -96,8 +95,6 @@
 		E9547F1E18829592005F8C08 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		E9547F201882A031005F8C08 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		E9547F211882A031005F8C08 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		E9547F231882A14C005F8C08 /* MainNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainNavigationViewController.h; sourceTree = "<group>"; };
-		E9547F241882A14C005F8C08 /* MainNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainNavigationViewController.m; sourceTree = "<group>"; };
 		E9547F261882A392005F8C08 /* YandeNavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YandeNavigationView.h; sourceTree = "<group>"; };
 		E9547F271882A392005F8C08 /* YandeNavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YandeNavigationView.m; sourceTree = "<group>"; };
 		E9547F2A1882EB2F005F8C08 /* ImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageCache.h; path = ImageDownloader/ImageCache.h; sourceTree = "<group>"; };
@@ -176,14 +173,7 @@
 				E9547EFD188293BB005F8C08 /* AFNetworking */,
 				E9547EDD18828D6E005F8C08 /* YandeAppDelegate.h */,
 				E9547EDE18828D6E005F8C08 /* YandeAppDelegate.m */,
-				E9547F261882A392005F8C08 /* YandeNavigationView.h */,
-				E9547F271882A392005F8C08 /* YandeNavigationView.m */,
-				E9547F201882A031005F8C08 /* MainViewController.h */,
-				E9547F211882A031005F8C08 /* MainViewController.m */,
-				E9547F231882A14C005F8C08 /* MainNavigationViewController.h */,
-				E9547F241882A14C005F8C08 /* MainNavigationViewController.m */,
-				BF9E8FF618883259002D36BC /* YandeCell.h */,
-				BF9E8FF718883259002D36BC /* YandeCell.m */,
+				E9BAAA34188B051100D20E8A /* UI */,
 				E9547EE018828D6E005F8C08 /* Images.xcassets */,
 				E9547ED518828D6E005F8C08 /* Supporting Files */,
 			);
@@ -260,6 +250,27 @@
 				E9547F341882FB35005F8C08 /* UIImageView+ImageDownloader.m */,
 			);
 			name = ImageDownloader;
+			sourceTree = "<group>";
+		};
+		E9BAAA34188B051100D20E8A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E9547F261882A392005F8C08 /* YandeNavigationView.h */,
+				E9547F271882A392005F8C08 /* YandeNavigationView.m */,
+				E9BAAA35188B051E00D20E8A /* Main */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		E9BAAA35188B051E00D20E8A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E9547F201882A031005F8C08 /* MainViewController.h */,
+				E9547F211882A031005F8C08 /* MainViewController.m */,
+				BF9E8FF618883259002D36BC /* YandeCell.h */,
+				BF9E8FF718883259002D36BC /* YandeCell.m */,
+			);
+			name = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,7 +386,6 @@
 				E9547F12188293BB005F8C08 /* AFHTTPRequestOperationManager.m in Sources */,
 				E9547F14188293BB005F8C08 /* AFNetworkReachabilityManager.m in Sources */,
 				E9547EDB18828D6E005F8C08 /* main.m in Sources */,
-				E9547F251882A14C005F8C08 /* MainNavigationViewController.m in Sources */,
 				BF9E8FFB188839B9002D36BC /* UIImage+ScaleImageFitType.m in Sources */,
 				BF9E8FF818883259002D36BC /* YandeCell.m in Sources */,
 			);

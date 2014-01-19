@@ -8,7 +8,6 @@
 
 #import "YandeAppDelegate.h"
 #import "MainViewController.h"
-#import "MainNavigationViewController.h"
 
 @implementation YandeAppDelegate
 
@@ -21,7 +20,7 @@
     
     //mainVewController
     MainViewController *mainViewContorller = [[MainViewController alloc]init];
-    MainNavigationViewController *navigationViewController = [[MainNavigationViewController alloc]initWithRootViewController:mainViewContorller];
+    UINavigationController *navigationViewController = [[UINavigationController alloc]initWithRootViewController:mainViewContorller];
     self.window.rootViewController = navigationViewController;
     
     

@@ -19,22 +19,42 @@
     return self;
 }
 
-- (id)initWithDoubleButtonTitle:(NSString *)title MenuButtonIcon:(UIImage *)menuButtonIcon SettingButtonIcon:(UIImage *)settingButtonIcon ButtonDelegate:(id)buttonDelegate MenuButtonSelecter:(SEL)menuButtonSelecter SettingButtonSelecter:(SEL)settingButtonSelecter
+- (id)initWithDoubleButtonTitle:(NSString *)title LeftButtonIcon:(UIImage *)leftButtonIcon RightButtonIcon:(UIImage *)rightButtonIcon ButtonDelegate:(id)buttonDelegate LeftButtonSelecter:(SEL)leftButtonSelecter RightButtonSelecter:(SEL)rightButtonSelecter
 {
     self  = [super init];
     if (self)
     {
+        //导航栏高
+        float navigationHigh = 30;
+        //导航栏颜色
+        self.backgroundColor = RGBCOLOR(238, 238, 238);
+        
+        if ([[[UIDevice currentDevice]systemVersion]floatValue] >= 7.0)
+            self.frame = CGRectMake(0, 0 , 320, navigationHigh + 20);
+        else
+            self.frame = CGRectMake(0, 0, 320, navigationHigh);
         //Title
-        //self.backgroundColor = [UIColor redColor];
-        self.frame = CGRectMake(0, 0 + EXTRAIOS7, 320, 44);
-        self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, EXTRAIOS7, self.frame.size.width, navigationHigh)];
         self.titleLabel.backgroundColor = [UIColor clearColor];
-        self.titleLabel.font = [UIFont fontWithName:@"Heiti SC" size:15];
+        self.titleLabel.font = FONT(15);
         self.titleLabel.textColor = [UIColor colorWithRed:250/255.0f green:60/255.0f blue:60/255.0f alpha:1];
         self.titleLabel.text = title;
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:self.titleLabel];
-        //Button
+        
+        //leftButton
+        self.leftButton = [[UIButton alloc]initWithFrame:CGRectMake(6, self.titleLabel.frame.origin.y, leftButtonIcon.size.width, leftButtonIcon.size.height)];
+        self.leftButton.adjustsImageWhenDisabled = NO;
+        [self.leftButton setImage:leftButtonIcon forState:UIControlStateNormal];
+        [self.leftButton addTarget:buttonDelegate action:leftButtonSelecter forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:self.leftButton];
+        
+        //rightButton
+        self.rightButton = [[UIButton alloc]initWithFrame:CGRectMake(320 - 6 - rightButtonIcon.size.width, self.titleLabel.frame.origin.y, rightButtonIcon.size.width, rightButtonIcon.size.height)];
+        self.leftButton.adjustsImageWhenDisabled = NO;
+        [self.rightButton setImage:rightButtonIcon forState:UIControlStateNormal];
+        [self.rightButton addTarget:buttonDelegate action:rightButtonSelecter forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:self.rightButton];
     }
     return self;
 }

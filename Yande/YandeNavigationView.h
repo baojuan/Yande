@@ -12,10 +12,10 @@
 //标题label
 @property (nonatomic,strong)UILabel *titleLabel;
 //菜单按钮
-@property (nonatomic,strong)UIButton *menuButton;
+@property (nonatomic,strong)UIButton *leftButton;
 //设置按钮
-@property (nonatomic,strong)UIButton *settingButton;
+@property (nonatomic,strong)UIButton *rightButton;
 
-- (id)initWithDoubleButtonTitle:(NSString *)title MenuButtonIcon:(UIImage *)menuButtonIcon SettingButtonIcon:(UIImage *)settingButtonIcon ButtonDelegate:(id)buttonDelegate MenuButtonSelecter:(SEL)menuButtonSelecter SettingButtonSelecter:(SEL)settingButtonSelecter;
+- (id)initWithDoubleButtonTitle:(NSString *)title LeftButtonIcon:(UIImage *)leftButtonIcon RightButtonIcon:(UIImage *)rightButtonIcon ButtonDelegate:(id)buttonDelegate LeftButtonSelecter:(SEL)leftButtonSelecter RightButtonSelecter:(SEL)rightButtonSelecter;
 
 @end
